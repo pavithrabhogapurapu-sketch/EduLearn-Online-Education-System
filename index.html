@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduLearn - Online Education System</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#f4f6f9;}
+#loginPage{height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(to right,#2563eb,#1e40af);}
+.login-box{background:white;width:350px;padding:35px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.3);text-align:center;}
+.login-box h2{margin-bottom:20px;color:#1e3a8a;}
+.login-box input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:5px;}
+.login-box button{width:100%;padding:12px;background:#1e3a8a;color:white;border:none;font-size:18px;cursor:pointer;border-radius:5px;}
+.login-box button:hover{background:#2563eb;}
+#mainPage{display:none;}
+header{background:#1e3a8a;color:white;padding:15px 50px;display:flex;justify-content:space-between;align-items:center;}
+header h2{font-size:28px;}
+nav a{color:white;text-decoration:none;margin-left:20px;font-weight:bold;}
+.hero{background:linear-gradient(to right,#2563eb,#1e40af);color:white;text-align:center;padding:90px 20px;}
+.hero h1{font-size:45px;}
+.hero p{margin-top:15px;font-size:20px;}
+.hero button{margin-top:30px;padding:12px 30px;border:none;background:white;color:#1e3a8a;font-size:18px;border-radius:5px;cursor:pointer;}
+.section{padding:60px;}
+.section h2{text-align:center;margin-bottom:40px;color:#1e3a8a;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;}
+.card{background:white;padding:25px;border-radius:10px;box-shadow:0 5px 10px rgba(0,0,0,.15);text-align:center;}
+.card h3{margin-bottom:15px;color:#2563eb;}
+.card p{color:#555;}
+.about{text-align:center;line-height:30px;color:#444;max-width:900px;margin:auto;}
+.contact{max-width:600px;margin:auto;}
+.contact input,.contact textarea{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:5px;}
+.contact button{width:100%;padding:12px;background:#1e3a8a;color:white;border:none;font-size:18px;cursor:pointer;}
+footer{background:#111827;color:white;text-align:center;padding:20px;margin-top:50px;}
+#exam .card{text-align:left;}
+#exam .card label{display:block;margin:10px 0;font-size:16px;cursor:pointer;}
+#exam .card button{margin:5px;padding:10px 20px;background:#1e3a8a;color:white;border:none;border-radius:5px;cursor:pointer;font-size:15px;}
+#exam .card button:hover{background:#2563eb;}
+#timer{font-size:25px;color:red;font-weight:bold;text-align:center;margin-bottom:20px;}
+#startBtn{padding:12px 30px;background:#1e3a8a;color:white;border:none;border-radius:5px;font-size:18px;cursor:pointer;}
+#startBtn:hover{background:#2563eb;}
+#resultBox{margin-top:30px;text-align:center;background:white;padding:40px;border-radius:10px;box-shadow:0 5px 10px rgba(0,0,0,.15);}
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+  <div class="login-box">
+    <h2>EduLearn Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div id="mainPage">
+  <header>
+    <h2>EduLearn</h2>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Courses</a>
+      <a href="#">Teachers</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#exam">Sample Exam</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Online Education System</h1>
+    <p>Learn New Skills Anytime, Anywhere</p>
+    <button>Explore Courses</button>
+  </section>
+
+  <section class="section">
+    <h2>Popular Courses</h2>
+    <div class="cards">
+      <div class="card"><h3>MERN Stack Development</h3><p>Complete MongoDB, Express, React and Node.js Course.</p></div>
+      <div class="card"><h3>Java Programming</h3><p>Master Java from beginner to advanced level.</p></div>
+      <div class="card"><h3>Python Development</h3><p>Learn Python for Web Development and Data Science.</p></div>
+      <div class="card"><h3>UI/UX Design</h3><p>Create modern and responsive user interfaces.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Why Choose Us?</h2>
+    <div class="cards">
+      <div class="card"><h3>Expert Trainers</h3><p>Learn from industry professionals.</p></div>
+      <div class="card"><h3>Live Classes</h3><p>Interactive online classes with doubt sessions.</p></div>
+      <div class="card"><h3>Certificates</h3><p>Receive certificates after course completion.</p></div>
+      <div class="card"><h3>24/7 Support</h3><p>Technical and academic support anytime.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>About Our Platform</h2>
+    <div class="about">
+      <p>Our Online Education System provides students with high-quality learning materials, live classes, recorded lectures, assignments, quizzes, and progress tracking. Students can register, enroll in courses, watch videos, submit assignments, and earn certificates after successful completion.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Contact Us</h2>
+    <div class="contact">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Email Address">
+      <textarea rows="6" placeholder="Your Message"></textarea>
+      <button type="button">Send Message</button>
+    </div>
+  </section>
+
+  <section class="section" id="exam">
+    <h2>Sample Exam</h2>
+
+    <div id="timer">Time Left : 10:00</div>
+
+    <div style="text-align:center;margin-bottom:20px;">
+      <button onclick="startExam()" id="startBtn">Start Exam</button>
+    </div>
+
+    <div class="card" id="questionCard" style="display:none;">
+      <h3 id="questionNo">Question 1 of 10</h3>
+      <p id="question" style="font-size:18px;margin-bottom:20px;"></p>
+      <label><input type="radio" name="answer" value="0"> <span id="opt1"></span></label>
+      <label><input type="radio" name="answer" value="1"> <span id="opt2"></span></label>
+      <label><input type="radio" name="answer" value="2"> <span id="opt3"></span></label>
+      <label><input type="radio" name="answer" value="3"> <span id="opt4"></span></label>
+      <br>
+      <button onclick="previousQuestion()">&#8592; Previous</button>
+      <button onclick="nextQuestion()">Next &#8594;</button>
+      <button onclick="submitExam()" style="background:#dc2626;">Submit Exam</button>
+    </div>
+
+    <div id="resultBox" style="display:none;">
+      <h2>Exam Result</h2>
+      <h3 id="score"></h3>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Online Education System | MERN Stack Internship Project</p>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+<script>
+function login() {
+  let username = document.getElementById("username").value.trim();
+  let password = document.getElementById("password").value.trim();
+  if (username !== "" && password !== "") {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+  } else {
+    alert("Please enter Username and Password");
+  }
+}
+
+function logout() {
+  document.getElementById("mainPage").style.display = "none";
+  document.getElementById("loginPage").style.display = "flex";
+  document.getElementById("username").value = "";
+  document.getElementById("password").value = "";
+  // Reset exam state on logout
+  clearInterval(timer);
+  timer = null;
+  time = 600;
+  currentQuestion = 0;
+  score = 0;
+  userAnswers = [];
+  document.getElementById("timer").innerHTML = "Time Left : 10:00";
+  document.getElementById("questionCard").style.display = "none";
+  document.getElementById("resultBox").style.display = "none";
+  document.getElementById("startBtn").style.display = "inline-block";
+}
+</script>
+</body>
+</html>
